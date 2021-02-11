@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
     },
   },
   mobile: {
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.down("sm")]: {
       display: "none",
     },
   },
@@ -17,7 +17,7 @@ export default makeStyles((theme) => ({
     },
   },
   last: {
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.down("sm")]: {
       marginBottom: theme.spacing(3),
       paddingBottom: "200px",
     },
