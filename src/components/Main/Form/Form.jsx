@@ -92,6 +92,10 @@ function Form() {
 
   //fucntion transaction
   const createTransaction = () => {
+    // err handle for imput empty
+    if (Number.isNaN(Number(formData.amount) || !formData.includes("-")))
+      return;
+
     const transaction = {
       ...formData,
       amount: Number(formData.amount),
