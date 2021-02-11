@@ -23,6 +23,13 @@ const initialState = JSON.parse(localStorage.getItem("transactions")) || [
     date: "2020-11-13",
     id: "365a4ebd-9892-4471-ad55-36077e4121a9",
   },
+  {
+    amount: 50,
+    category: "Pets",
+    type: "Expense",
+    date: "2020-11-13",
+    id: "c5647dde-d857-463d-8b4e-1c866cc5f83e",
+  },
 ];
 
 export const ExpanseTrackerContext = createContext(initialState);
