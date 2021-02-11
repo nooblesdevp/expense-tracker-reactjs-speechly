@@ -52,6 +52,31 @@ function Form() {
       ) {
         return setFormData(initialState);
       }
+
+      segment.entities.forEach((e) => {
+        // to get first character with Uppercase in the front form data
+        const catogory = `${e.value.charAt(0)}${e.value
+          .slice(1)
+          .toLowerCase()}`;
+        switch (e.type) {
+          case "amount":
+            setFormData({ ...formData, amount: e.value });
+            break;
+          case "category":
+            if(incomeCategories.map((iC)=> iC.type).includes(category)){
+              setFormData({ ...formData, type:'Income' category });
+            } else if(expenseCategories.map((iC) => iC.type).includes(category)){
+              setFormData({...formData, type: 'Expense', category})
+            }
+
+            break;
+          case "date":
+            setFormData({ ...formData, date: e.value });
+            break;
+          default:
+            break;
+        }
+      });
     }
   }, [segment]);
 
