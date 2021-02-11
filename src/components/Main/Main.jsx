@@ -11,6 +11,7 @@ import useStyles from "./styles";
 import Form from "./Form/Form";
 import List from "./List/List";
 import { ExpanseTrackerContext } from "../../context/context";
+import InfoCard from "../InfoCard";
 
 function Main() {
   const classes = useStyles();
@@ -27,10 +28,9 @@ function Main() {
           variant="subtitle1"
           style={{ lineHeight: "1.5rem", marginTop: "20px" }}
         >
-          {/* infoCard */}
-          Try saying: Add income for $100 in Category Salary for Monday ...
+          <InfoCard />
         </Typography>
-        <Divider />
+        <Divider className={classes.divider} />
         <Form />
       </CardContent>
       <CardContent className={classes.CardContent}>
