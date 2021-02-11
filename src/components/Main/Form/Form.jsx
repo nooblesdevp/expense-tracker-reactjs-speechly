@@ -55,7 +55,7 @@ function Form() {
 
       segment.entities.forEach((e) => {
         // to get first character with Uppercase in the front form data
-        const catogory = `${e.value.charAt(0)}${e.value
+        const category = `${e.value.charAt(0)}${e.value
           .slice(1)
           .toLowerCase()}`;
         switch (e.type) {
@@ -63,12 +63,13 @@ function Form() {
             setFormData({ ...formData, amount: e.value });
             break;
           case "category":
-            if(incomeCategories.map((iC)=> iC.type).includes(category)){
-              setFormData({ ...formData, type:'Income' category });
-            } else if(expenseCategories.map((iC) => iC.type).includes(category)){
-              setFormData({...formData, type: 'Expense', category})
+            if (incomeCategories.map((iC) => iC.type).includes(category)) {
+              setFormData({ ...formData, type: "Income", category });
+            } else if (
+              expenseCategories.map((iC) => iC.type).includes(category)
+            ) {
+              setFormData({ ...formData, type: "Expense", category });
             }
-
             break;
           case "date":
             setFormData({ ...formData, date: e.value });
@@ -77,6 +78,15 @@ function Form() {
             break;
         }
       });
+      if (
+        segment.isFinal &&
+        formData.amount &&
+        formData.category &&
+        formData.date &&
+        formData.type
+      ) {
+        createTransaction();
+      }
     }
   }, [segment]);
 
