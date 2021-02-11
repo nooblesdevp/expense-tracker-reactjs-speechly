@@ -55,7 +55,7 @@ export const Provider = ({ children }) => {
 
   return (
     <ExpanseTrackerContext.Provider
-      value={{ deleteTransaction, addTransaction, transactions }}
+      value={{ deleteTransaction, addTransaction, transactions, balance }}
     >
       {children}
     </ExpanseTrackerContext.Provider>
