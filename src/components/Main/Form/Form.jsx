@@ -20,6 +20,7 @@ import {
 import formatDate from "../../../utils/formatDate";
 
 import { useSpeechContext } from "@speechly/react-client";
+import Sneckbar from "../../Sneckbar/Sneckbar";
 
 const initialState = {
   amount: "",
@@ -33,6 +34,8 @@ function Form() {
   const [formData, setFormData] = useState(initialState);
   const { addTransaction } = useContext(ExpanseTrackerContext);
   const { segment } = useSpeechContext();
+
+  const [open, setOpen] = useState(false);
 
   // with speechly u can change form input with Your mouth like this!!
   useEffect(() => {
@@ -101,6 +104,9 @@ function Form() {
       amount: Number(formData.amount),
       id: uuidv4(),
     };
+    //popup notif
+    setOpen(true);
+
     addTransaction(transaction);
 
     //clear form input
@@ -113,6 +119,7 @@ function Form() {
 
   return (
     <Grid container spacing={2}>
+      <Sneckbar open={open} setOpen={setOpen} />
       <Grid item xs={12}>
         <Typography align="center" variant="subtitle2" gutterBottom>
           {segment && <>{segment.words.map((w) => w.value).join(" ")}</>}
